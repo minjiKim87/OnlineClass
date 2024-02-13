@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SignLoginPage.css";
 
 const SignupPage = () => {
@@ -7,11 +8,36 @@ const SignupPage = () => {
   const [name, setName] = useState("");
   const [studentId, setStudentId] = useState("");
   const [role, setRole] = useState("student");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signup:", username, password, name, studentId, role);
-    // API 호출
+
+    try {
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          name: name,
+          studentId: studentId,
+          role: role,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Signup success:", data);
+        navigate("/login");
+      } else {
+        const errorData = await response.json();
+        console.error("Signup failed:", errorData.message);
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+    }
   };
 
   return (

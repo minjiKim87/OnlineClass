@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const TeacherDashboardPage = () => {
-  const courses = [
-    { id: 1, title: "Introduction to Programming" },
-    { id: 2, title: "Advanced Web Development" },
-  ];
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("/api/courses/my", {
+          method: "GET",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch courses");
+        }
+        const data = await response.json();
+        setCourses(data.courses);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   return (
     <div>
