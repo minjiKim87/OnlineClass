@@ -1,0 +1,44 @@
+.login-page,
+.signup-page {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.login-page form,
+.signup-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page label,
+.signup-page label {
+  margin-bottom: 5px;
+}
+
+.login-page input,
+.signup-page input,
+.login-page select,
+.signup-page select {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-page button,
+.signup-page button {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login-page button:hover,
+.signup-page button:hover {
+  background-color: #555;
+}

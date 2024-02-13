@@ -1,0 +1,40 @@
+.home-container {
+  text-align: center;
+}
+
+.section-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.teacher-section,
+.student-section {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 40%;
+}
+
+.teacher-section h2,
+.student-section h2 {
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
